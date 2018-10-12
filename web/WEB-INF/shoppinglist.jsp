@@ -46,10 +46,10 @@
             ${error}
         </form>
         <%-- 
-                DISPLAY
+                DISPLAY && DELETE
         --%>
 
-        <form action="shoppinglist" method="post">
+           <form action="shoppinglist" method="post">
             <c:forEach items="${items}" var="item">
                 <input type="radio" name="added" value="${item}">${item}<br>
             </c:forEach>

@@ -69,9 +69,18 @@ public class ShoppingListServlet extends HttpServlet {
         if (action.equals("add")) {
 
             if (!input.equals("")) {
+                for (int i = 0; i < items.size(); i++) {
+                    if (items.get(i).equals(input)) {
+
+                        request.setAttribute("error", "Item already added");
+                        getServletContext().getRequestDispatcher("/WEB-INF/shoppinglist.jsp").forward(request, response);
+                        return;
+                    }
+                }
                 items.add(input);
                 session.setAttribute("list", items);
                 getServletContext().getRequestDispatcher("/WEB-INF/shoppinglist.jsp").forward(request, response);
+
             } else {
                 request.setAttribute("error", "Enter an item");
                 getServletContext().getRequestDispatcher("/WEB-INF/shoppinglist.jsp").forward(request, response);
